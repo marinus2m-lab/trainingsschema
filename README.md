@@ -1,24 +1,11 @@
-# AV '34 — Lopersapp v0.8
+# AV '34 Looptraining 1.0 — Supabase
 
-Weekoverzicht, AV '34-logo, zondagse duurlopen, en deelname met zichtbare namen.
+1. Controleer dat de eerdere AV34 SQL scripts zijn uitgevoerd.
+2. Voer `01_importeer_trainingen.sql` uit in Supabase SQL Editor (project av34-looptraining). De trainingstijden zijn voorlopige placeholders (19:30 doordeweeks en 09:00 zondag), controleer deze met de echte planning.
+3. Upload de webbestanden naar de root van de GitHub Pages repository `trainingsschema`.
+4. Controleer Authentication > URL Configuration met `https://marinus2m-lab.github.io/trainingsschema/` als Site URL en redirect allowlist.
+5. Test verificatiemail, profiel opslaan, aanmelden, afmelden en privacy met twee accounts.
 
-## Centrale opslag activeren (verplicht voor deelname)
-1. Maak een Supabase-project aan.
-2. Activeer **Authentication → Providers → Anonymous sign-ins**.
-3. Voer `supabase.sql` uit in de SQL Editor.
-4. Zet Realtime aan voor de tabel `public.training_attendance` (optioneel voor automatische updates; anders verschijnt een wijziging na herladen).
-5. Vul de publieke Project URL en **publishable/anon key** in `config.js` in. **Nooit de secret/service_role key gebruiken.**
-6. Publiceer alle bestanden via GitHub Pages over de vorige versie heen.
+De app gebruikt alleen een openbare publishable key. Geen service-role key. De trainingstitels blijven lokaal in de meegeleverde app; de database gebruikt dezelfde datums voor de aanmeldingen. De trainerweergave van verborgen namen wordt in een volgende trainerinterface aangesloten.
 
-Zonder deze configuratie toont de app het trainingsschema, maar is deelname uitgeschakeld. Er worden geen fictieve deelnemers getoond.
-
-### Privacy en beperkingen
-- Bij deelname is de ingevulde naam zichtbaar voor andere gebruikers. Zorg voor een passende privacyverklaring en verenigingsbeleid.
-- De anonieme accountidentiteit is apparaat-/browsergebonden; na het wissen van browsergegevens kan een eerdere inschrijving niet meer vanaf dat apparaat worden ingetrokken.
-- Iemand kan zelf een andere naam invullen; dit is geen identiteitscontrole.
-- De opgeslagen naam is lokaal; reeds gemaakte inschrijvingen behouden de toen gebruikte naam.
-- Voor een latere productieversie is beheerdersmoderatie/verwijderen van verloren inschrijvingen wenselijk.
-- GitHub Pages is openbaar; trainerfuncties staan niet in deze app.
-
-## Versie 0.9
-Nieuwe rustige header met atletiekbaanlijnen, origineel AV '34-logo, profielknop rechtsboven en naam wijzigen. Voer de bijgewerkte `supabase.sql` uit voor het wijzigen van namen bij bestaande aanmeldingen. De Supabase-koppeling moet nog worden geconfigureerd.
+Let op: Supabase standaard SMTP kan e-mails beperken.
